@@ -12,7 +12,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import LaunchIcon from "@material-ui/icons/Launch";
 
-import kenindiaPhoto from "./images/kenindia-insurance.jpg";
+import barkShop from "./images/shopify.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,43 +103,32 @@ const Shopify = () => {
             Recent Shopify projects
           </Typography>
         </Grid>
-        <Grid item md={6}>
+        <Grid item md={12}>
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
-                image={kenindiaPhoto}
+                image={barkShop}
                 title="E-portal"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  E-Portal - Pension Management system
+                  Bark delights
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  This system helps in processing and managing of pension
-                  schemes for life insurance companies. The system has Pension
-                  Scheme Members, Pension Scheme Trustees, Annuitants, and
-                  Individual Life Policies modules.
+                  An online store for selling pet foods, toys and supplies.{" "}
+                  <span>Store password is "flauts"</span>
                 </Typography>
               </CardContent>
             </CardActionArea>
             <CardActions disableSpacing>
-              <Button size="small" color="primary">
-                Python(django)
-              </Button>
-              <Button size="small" color="primary">
-                Javascript
-              </Button>
-              <Button size="small" color="primary">
-                Oracle DB
-              </Button>
-              <Button size="small" color="primary">
-                Bootstrap
+              <Button variant="contained" size="small" color="primary">
+                Shopify
               </Button>
               <IconButton
                 aria-label="view"
                 className={classes.actionIcon}
-                href="https://eportal.kenindia.com/"
+                href="https://bark-delights.myshopify.com/"
                 target="_blank"
               >
                 <LaunchIcon />
