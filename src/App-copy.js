@@ -4,9 +4,10 @@ import {
   Link as RouterLink,
   Route,
   Switch,
+  useHistory,
 } from "react-router-dom";
 import clsx from "clsx";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
@@ -23,19 +24,19 @@ import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import MuiListItem from "@material-ui/core/ListItem";
+import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import SchoolIcon from "@material-ui/icons/School";
 import ContactsIcon from "@material-ui/icons/Contacts";
 import DescriptionIcon from "@material-ui/icons/Description";
 import FolderSpecialIcon from "@material-ui/icons/FolderSpecial";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import KeyboardIcon from "@material-ui/icons/Keyboard";
-import Avatar from "@material-ui/core/Avatar";
 import AboutMe from "./screens/AboutMe";
 import Projects from "./screens/Projects";
 import Skills from "./screens/Skills";
@@ -96,11 +97,7 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
   },
   title: {
-    marginLeft: 15,
-    color: theme.palette.secondary.main,
-    backgroundColor: "#424242",
-    fontSize: 20,
-    fontWeight: "bold",
+    flexGrow: 1,
   },
   drawerPaper: {
     position: "relative",
@@ -150,6 +147,20 @@ const useStyles = makeStyles((theme) => ({
   itemList: {
     fontWeight: 600,
   },
+  itemListItem: {
+    "&$selected": {
+      backgroundColor: "red",
+      color: "white",
+    },
+    "&$selected:hover": {
+      backgroundColor: "purple",
+      color: "white",
+    },
+    "&:hover": {
+      backgroundColor: "blue",
+      color: "white",
+    },
+  },
   profilSize: {
     width: 150,
     height: 150,
@@ -174,30 +185,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ListItem = withStyles({
-  root: {
-    "&$selected": {
-      backgroundColor: "#ffcc00",
-      color: "black",
-      "& .MuiListItemIcon-root": {
-        color: "black",
-      },
-    },
-    "&$selected:hover": {
-      backgroundColor: "#ffc107",
-      color: "black",
-      "& .MuiListItemIcon-root": {
-        color: "black",
-      },
-    },
-  },
-  selected: {},
-})(MuiListItem);
-
 const App = () => {
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = useState(1);
 
+  let history = useHistory();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -232,7 +224,20 @@ const App = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Avatar className={classes.title}>BO</Avatar>
+            <Typography
+              component="h1"
+              variant="h6"
+              color="inherit"
+              noWrap
+              className={classes.title}
+            >
+              Dashboard
+            </Typography>
+            <IconButton color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
           </Toolbar>
         </AppBar>
         <Drawer
